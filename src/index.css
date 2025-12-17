@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* GT's Living Foods inspired palette - soft teal/sage background */
+    --background: 180 15% 92%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    /* Vibrant coral/orange brand color */
+    --primary: 16 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm gold accent */
+    --secondary: 38 90% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 180 10% 88%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Deep burgundy accent */
+    --accent: 350 65% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 10% 85%;
+    --input: 180 10% 85%;
+    --ring: 16 85% 55%;
+
+    --radius: 1.5rem;
+
+    /* Custom brand colors */
+    --brand-coral: 16 85% 55%;
+    --brand-teal: 174 42% 51%;
+    --brand-gold: 38 90% 55%;
+    --brand-sage: 180 15% 92%;
+    --brand-burgundy: 350 65% 40%;
+
+    /* Hero gradient - coral to orange */
+    --gradient-hero: linear-gradient(135deg, hsl(16 85% 55%) 0%, hsl(30 90% 50%) 50%, hsl(16 85% 55%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(16 85% 55%) 0%, hsl(38 90% 55%) 100%);
+    --gradient-fresh: linear-gradient(135deg, hsl(174 42% 51%) 0%, hsl(174 42% 41%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(220 20% 15% / 0.06);
+    --shadow-card: 0 8px 30px -8px hsl(220 20% 15% / 0.08);
+    --shadow-elevated: 0 25px 50px -12px hsl(220 20% 15% / 0.15);
+    --shadow-glow-primary: 0 8px 30px -8px hsl(16 85% 55% / 0.35);
+    --shadow-glow-secondary: 0 8px 30px -8px hsl(174 42% 51% / 0.35);
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 180 15% 95%;
+    --card: 220 20% 14%;
+    --card-foreground: 180 15% 95%;
+    --popover: 220 20% 14%;
+    --popover-foreground: 180 15% 95%;
+    --primary: 16 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 90% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 180 10% 65%;
+    --accent: 350 65% 50%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .font-script {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .glass-nav {
+    @apply bg-background/90 backdrop-blur-xl border-b border-border/30;
+  }
+
+  .card-dish {
+    @apply bg-card rounded-3xl overflow-hidden transition-all duration-500;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-dish:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-8px);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 inline-flex items-center justify-center;
+    box-shadow: var(--shadow-glow-primary);
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 15px 40px -8px hsl(16 85% 55% / 0.5);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 inline-flex items-center justify-center;
+  }
+
+  .btn-secondary:hover {
+    @apply scale-105;
+  }
+
+  .btn-outline {
+    @apply border-2 border-card text-card font-semibold px-8 py-4 rounded-full transition-all duration-300 bg-transparent inline-flex items-center justify-center;
+  }
+
+  .btn-outline:hover {
+    @apply bg-card text-foreground;
+  }
+
+  .badge-veg {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-card/90 text-foreground backdrop-blur-sm;
+  }
+
+  .badge-spicy {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent;
+  }
+
+  .chip-filter {
+    @apply px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 border-2 border-transparent;
+  }
+
+  .chip-filter.active {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  .chip-filter:not(.active) {
+    @apply bg-card text-foreground hover:border-primary/30;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32 px-4 md:px-8;
+  }
+
+  .container-main {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .heading-hero {
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight;
+  }
+
+  .heading-script {
+    @apply font-script text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-5xl font-bold;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hero card with rounded corners */
+  .hero-card {
+    @apply rounded-3xl overflow-hidden mx-4 md:mx-8 lg:mx-16;
+    background: var(--gradient-hero);
+  }
+
+  /* Brand tile cards */
+  .brand-tile {
+    @apply bg-card rounded-3xl overflow-hidden transition-all duration-500 cursor-pointer;
+    box-shadow: var(--shadow-card);
+  }
+
+  .brand-tile:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  /* Philosophy section */
+  .philosophy-bg {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(180 12% 88%) 100%);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .parallax-layer {
+    will-change: transform;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(16 85% 55% / 0.3); }
+  50% { box-shadow: 0 0 50px hsl(16 85% 55% / 0.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .parallax-layer {
+    animation: none !important;
+    transform: none !important;
+  }
+}
