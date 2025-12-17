@@ -1,4 +1,4 @@
-<!-- import React, { useState } from 'react';
+{/*  import React, { useState } from 'react';
 import { XIcon } from './icons/Icons';
 
 const TopBar = () => {
@@ -25,4 +25,4 @@ const TopBar = () => {
 };
 
 export default TopBar;''' 
--->
+*/}
